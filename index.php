@@ -38,7 +38,13 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </tbody>
 </table>
-
+<script>
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
+    });
+</script>
 
 <?php
 include 'includes/footer.php';
