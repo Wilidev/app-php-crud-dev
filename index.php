@@ -9,7 +9,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <h2>Gestión de Productos</h2>
 <a href="create.php" type="button" class="btn btn-success">➕ Nuevo Producto</a>
 
-<table class="table table-hover">
+<table class="table table-hover"; >
     <thead>
         <tr>
             <th>ID</th>
@@ -31,21 +31,20 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td>
                     <div style="display: flex;">
                         <a href="delete.php?id_producto=<?php echo $item['id_producto']; ?>" class="mx-2 btn btn-outline-danger">🗑️</a>
-                        <a href="#" class="mx-2 btn btn-outline-info">🖋️</a>
+                        <a href="update.php?id_producto=<?php echo $item['id_producto']; ?>" class="mx-2 btn btn-outline-info">🖋️</a>
                     </div>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-<script>
+<!-- <script>
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "Pruducto Guardado",
+        text: "Producto Registrado Correctamente",
         icon: "success"
-    });
-</script>
-
+    }).then(()=>window.location='index.php');
+</script> -->
 <?php
 include 'includes/footer.php';
 

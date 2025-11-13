@@ -9,10 +9,10 @@
 
 </head>
 
-<body style="background-color:green; color: white; margin-left:10%">
+<body style="background-image: url('gol.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
 
     <h2 style="text-align: center;">TRABAJO</h2>
-    <section>
+    <section style="margin-left:10%">
         <h2  style="color: black;">Variables y Constantes</h2>
         <?php
         $nombre = "Dida";
@@ -25,7 +25,7 @@
         ?>
     </section>
     <hr>
-    <section>
+    <section style="margin-left:10%;">
         <h2 style="color: black;">Operadores</h2>
         <?php
         $a = 100;
@@ -39,10 +39,10 @@
         ?>
     </section>
     <hr>
-    <section>
+    <section style="margin-left:10%;">
         <h2 style="color: black;">Control de Flujo</h2>
         <?php
-        $nota = 80;
+        $nota = 40;
 
         // If-elseif-else
         if ($nota >= 90) {
@@ -60,23 +60,23 @@
             echo "Estamos en clase <br>";
         }
 
-        /*$dia = "Lunes";
+        $dia = "martes";
         switch ($dia) {
             case "Lunes":
-                echo ""."<br>";
+                echo "hoy es lunes"."<br>";
                 break;
             case "Jueves":
-                echo "Hoy"."<br>";
+                echo "Hoy es jueves"."<br>";
                 break;
             default:
                 echo "Otro dia de la semana"."<br>";
                 break;
         }
-        */
+        
         ?>
     </section>
     <hr>
-    <section>
+    <section style="margin-left:10%;">
         <h2 style="color: black;">Bucles</h2>
         <?php
         echo "Bucle for:"."<br>";   
@@ -94,7 +94,7 @@
         ?>
     </section>
     <hr>
-    <section>
+    <section style="margin-left:10%;">
         <h2 style="color: black;">Funciones</h2>
         <?php
         function saludar($persona)
@@ -115,7 +115,7 @@
         ?>
     </section>
     <hr>
-    <section>
+    <section style="margin-left:10%;">
         <h2 style="color: black;">Arreglos</h2>
         <?php 
         $deporte = array(
@@ -134,7 +134,7 @@
             "z" => 42
         );
 
-        echo "El es ". $nombres[2] . " y tiene " . $edades['y'] . " años y practica ". $deporte['a']."<br>";
+        echo "El es ". $nombres[2] . " , tiene " . $edades['y'] . " años y practica ". $deporte['a']."<br>";
 
         ?>
     </section>
