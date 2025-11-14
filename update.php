@@ -1,10 +1,13 @@
 <?php
 require 'config/db.php';
 include 'includes/header.php';
+require 'includes/funciones.php';
+$marcas = obtenerMarca($pdo);
+$categorias = obtenerCategoria($pdo);
 
 $id_producto = $_GET["id_producto"];
 $stmt = $pdo->prepare("select * from productos where id_producto = ?");
-$stmt -> execute([$id_producto]);
+$stmt->execute([$id_producto]);
 $producto = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,15 +15,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
+    $id_marca = $_POST['id_marca'];
+    $id_categoria = $_POST['id_categoria'];
 
     try {
         $stmt = $pdo->prepare(
             "UPDATE PRODUCTOS
-            SET nombre = ?, descripcion =?, precio =?, stock =?
+            SET nombre = ?, descripcion =?, precio =?, stock =?, id_marca=?, id_categoria=? 
             WHERE id_producto =?
             "
         );
-        $stmt->execute([$nombre, $descripcion, $precio, $stock, $id_producto]);
+        $stmt->execute([$nombre, $descripcion, $precio, $stock, $id_marca, $id_categoria, $id_producto]);
 
         echo "
         <script>
@@ -70,10 +75,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" class="form-control" id="stock" name="stock" required value="<?= $producto['stock'] ?>">
     </div>
 
+    
+    <div class="mb-3">
+        <label for="id_categoria" class="form-label">Categoria</label>
+        <select name="id_categoria" class="form-select">
+            <?php foreach ($categorias as $cat): ?>
+                <option value="<?= $cat['id_categoria'] ?>" <?= $cat['id_categoria'] == $producto['id_categoria'] ? 'selected' : '' ?>>
+                    <?= $cat['nombre'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+     <div class="mb-3">
+        <label for="id_marca" class="form-label">Marca</label>
+        <select name="id_marca" class="form-select">
+            <?php foreach ($marcas as $marca): ?>
+                <option value="<?= $cat['id_marca'] ?>" <?= $marca['id_marca'] == $producto['id_marca'] ? 'selected' : '' ?>>
+                    <?= $marca['nombre'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    
+
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
-
-
 
 <?php
 include 'includes/footer.php';

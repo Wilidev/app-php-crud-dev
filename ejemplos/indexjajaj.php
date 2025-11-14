@@ -9,7 +9,7 @@
 
 </head>
 
-<body style="background-image: url('gol.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+<body style="background-image: url('per.avif'); background-size: cover; background-repeat: no-repeat; background-position: center;">
 
     <h2 style="text-align: center;">TRABAJO</h2>
     <section style="margin-left:10%">

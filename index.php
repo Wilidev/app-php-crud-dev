@@ -2,14 +2,18 @@
 require 'config/db.php';
 include 'includes/header.php';
 
-$stmt = $pdo->query("SELECT * FROM productos");
+$stmt = $pdo->query("SELECT p.*, c.nombre AS nombre_categoria, m.nombre AS nombre_marca
+FROM productos p
+LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
+LEFT JOIN marcas m ON p.id_marca = m.id_marca
+");
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h2>Gestión de Productos</h2>
 <a href="create.php" type="button" class="btn btn-success">➕ Nuevo Producto</a>
 
-<table class="table table-hover"; >
+<table class="table table-hover" ;>
     <thead>
         <tr>
             <th>ID</th>
@@ -17,6 +21,8 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Marca</th>
+            <th>Categoria</th>
             <th>Opciones</th>
         </tr>
     </thead>
@@ -28,6 +34,8 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?php echo $item['descripcion']; ?></td>
                 <td><?php echo $item['precio']; ?></td>
                 <td><?php echo $item['stock']; ?></td>
+                <td><?php echo $item['nombre_marca']; ?></td>
+                <td><?php echo $item['nombre_categoria']; ?></td>
                 <td>
                     <div style="display: flex;">
                         <a href="delete.php?id_producto=<?php echo $item['id_producto']; ?>" class="mx-2 btn btn-outline-danger">🗑️</a>
