@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $stmt = $pdo->prepare(
             "INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria, id_marca, creado_por) 
-        VALUES (?,?,?,?,?,?,?)"
+        VALUES (?,?,?,?,?,?,? )"
         );
         $stmt->execute([$nombre, $descripcion, $precio, $stock, $id_categoria, $id_marca, $_SESSION['id_usuario']]);
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     //header("Location: index.php");
-    exit;
+    // exit;
 }
 ?>
 <h2>Agregar Nuevo Producto➕</h2>
