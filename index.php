@@ -2,12 +2,11 @@
 require 'config/db.php';
 include 'includes/header.php';
 
-$stmt = $pdo->query("SELECT p.*, c.nombre AS nombre_categoria, m.nombre AS nombre_marca
-FROM productos p
-LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
-LEFT JOIN marcas m ON p.id_marca = m.id_marca
-ORDER BY p.id_producto DESC
-
+$stmt = $pdo->query("SELECT productos.*, c.nombre AS nombre_categoria, m.nombre AS nombre_marca
+FROM productos 
+LEFT JOIN categorias c ON productos.id_categoria = c.id_categoria
+LEFT JOIN marcas m ON productos.id_marca = m.id_marca
+ORDER BY productos.id_producto DESC
 ");
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
