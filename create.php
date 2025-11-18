@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     try {
         $stmt = $pdo->prepare(
-            "INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria, id_marca) 
-        VALUES (?,?,?,?,?,?)"
+            "INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria, id_marca, creado_por) 
+        VALUES (?,?,?,?,?,?,?)"
         );
-        $stmt->execute([$nombre, $descripcion, $precio, $stock, $id_categoria, $id_marca]);
+        $stmt->execute([$nombre, $descripcion, $precio, $stock, $id_categoria, $id_marca, $_SESSION['id_usuario']]);
 
         echo "
         <script>
