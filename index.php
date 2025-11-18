@@ -6,7 +6,7 @@ $stmt = $pdo->query("SELECT productos.*, c.nombre AS nombre_categoria, m.nombre 
 FROM productos 
 LEFT JOIN categorias c ON productos.id_categoria = c.id_categoria
 LEFT JOIN marcas m ON productos.id_marca = m.id_marca
-ORDER BY productos.id_producto DESC
+ORDER BY productos.fecha_creacion DESC
 ");
 $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
