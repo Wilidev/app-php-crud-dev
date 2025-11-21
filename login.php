@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 }
 ?>
-<h2>Login 🍀</h2>
+<h2>Login 🍀🍀🍀🍀</h2>
 
 <form method="POST">
     <div class="mb-3">
